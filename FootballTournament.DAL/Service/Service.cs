@@ -1,4 +1,5 @@
 ﻿using FootballTournament.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -160,6 +161,11 @@ namespace FootballTournament.DAL.Architecture
         public Match? GetMatchById(int matchId)
         {
             return _repository.GetById<Match>(matchId);
+        }
+
+        public List<Player>? GetPlayersByTeam(int teamId)
+        {
+            return _repository.GetAll<Player>().Where(p => p.TeamId == teamId).ToList();
         }
 
         public Player? GetPlayerById(int playerId)

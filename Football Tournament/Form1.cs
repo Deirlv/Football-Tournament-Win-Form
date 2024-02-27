@@ -151,7 +151,7 @@ namespace Football_Tournament
 
         private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this team?", "Deleting Team", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this team? All associated matches and players will also be deleted", "Deleting Team", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -160,6 +160,22 @@ namespace Football_Tournament
                 Team? team = _service.GetTeamById(teamId);
                 if (team != null)
                 {
+                    List<Match>? matches = _service.GetMatchesByTeam(teamId);
+                    List<Player>? players = _service.GetPlayersByTeam(teamId);
+                    if(matches != null)
+                    {
+                        foreach(Match match in matches)
+                        {
+                            _service.Remove(match);
+                        }
+                    }
+                    if(players != null)
+                    {
+                        foreach (Player player in players)
+                        {
+                            _service.Remove(player);
+                        }
+                    }
                     _service.Remove(team);
                     dataGridViewTeams.Rows.RemoveAt(e.Row.Index);
                 }
