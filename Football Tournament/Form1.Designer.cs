@@ -63,6 +63,7 @@
             menuStrip1 = new MenuStrip();
             commandsToolStripMenuItem = new ToolStripMenuItem();
             findToolStripMenuFind = new ToolStripMenuItem();
+            buttonRefresh = new Button();
             tabControlMain.SuspendLayout();
             tabTeams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTeams).BeginInit();
@@ -334,11 +335,22 @@
             findToolStripMenuFind.Text = "Find";
             findToolStripMenuFind.Click += findToolStripMenuFind_Click;
             // 
+            // buttonRefresh
+            // 
+            buttonRefresh.Location = new Point(116, 528);
+            buttonRefresh.Name = "buttonRefresh";
+            buttonRefresh.Size = new Size(88, 23);
+            buttonRefresh.TabIndex = 4;
+            buttonRefresh.Text = "Refresh";
+            buttonRefresh.UseVisualStyleBackColor = true;
+            buttonRefresh.Click += buttonRefresh_Click;
+            // 
             // TournamentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(878, 559);
+            Controls.Add(buttonRefresh);
             Controls.Add(buttonAdd);
             Controls.Add(tabControlMain);
             Controls.Add(menuStrip1);
@@ -396,5 +408,6 @@
         private DataGridViewTextBoxColumn columnFirstTeamGoals;
         private DataGridViewTextBoxColumn columnSecondTeamGoals;
         private DataGridViewTextBoxColumn columnMatchDate;
+        private Button buttonRefresh;
     }
 }

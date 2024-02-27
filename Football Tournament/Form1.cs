@@ -162,14 +162,14 @@ namespace Football_Tournament
                 {
                     List<Match>? matches = _service.GetMatchesByTeam(teamId);
                     List<Player>? players = _service.GetPlayersByTeam(teamId);
-                    if(matches != null)
+                    if (matches != null)
                     {
-                        foreach(Match match in matches)
+                        foreach (Match match in matches)
                         {
                             _service.Remove(match);
                         }
                     }
-                    if(players != null)
+                    if (players != null)
                     {
                         foreach (Player player in players)
                         {
@@ -422,6 +422,22 @@ namespace Football_Tournament
                 }
             }
             e.Cancel = true;
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            if(tabControlMain.SelectedIndex == 0)
+            {
+                comboBoxTeams_SelectedIndexChanged(null, null);
+            }
+            else if(tabControlMain.SelectedIndex == 1)
+            {
+                comboBoxPlayers_SelectedIndexChanged(null, null);
+            }
+            else if (tabControlMain.SelectedIndex == 2)
+            {
+                comboBoxMatches_SelectedIndexChanged(null, null);
+            }
         }
     }
 }
